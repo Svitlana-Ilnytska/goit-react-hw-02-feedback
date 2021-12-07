@@ -2,19 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import Notification from "./Notification";
 
+import css from "./Statistics.module.css";
+
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
   <div>
     {total ? (
       <>
-        <h2> Statistics</h2>
-        <p> Good: {good}</p>
-        <p> Neutral: {neutral}</p>
-        <p> Bad: {bad}</p>
-        <p> Total: {total}</p>
-        <p> Positive feedback: {positivePercentage} %</p>
+        <h2 className={css.title}> Statistics</h2>
+        <p className={css.title}> Good: {good}</p>
+        <p className={css.title}> Neutral: {neutral}</p>
+        <p className={css.title}> Bad: {bad}</p>
+        <p className={css.title}> Total: {total}</p>
+        <p className={css.title}> Positive feedback: {positivePercentage} %</p>
       </>
     ) : (
-      <Notification message="There is no feedback" />
+      <div className={css.title}>
+        <Notification message="There is no feedback" />
+      </div>
     )}
   </div>
 );
