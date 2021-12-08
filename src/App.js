@@ -18,23 +18,25 @@ export default class App extends Component {
     }));
   };
 
-  countTotalFeedback = () => {};
+  countTotalFeedback = () => {
+    const totalSum = Object.keys(this.state)
+    .reduce((sum, key) => {
+      return sum + this.state[key];
+    }, 0);
+    return totalSum;
+  };
 
-  // countPositiveFeedbackPercentage = () => {
-  //   const positivePercentage = (this.state.good * 100) / countTotalFeedback();
-    
-  //   return positivePercentage;
-  // };
+  countPositiveFeedbackPercentage = () => {
+    const positivePercentage =
+      (this.state.good * 100) / this.countTotalFeedback();
+    return positivePercentage;
+  };
 
   render() {
     const { good } = this.state;
     const { neutral } = this.state;
     const { bad } = this.state;
     // const { options } = this.state;
-
-    const total = good + neutral + bad;
-
-    const positivePercentage = (good * 100) / total;
 
     return (
       <div>
@@ -47,8 +49,8 @@ export default class App extends Component {
             good={good}
             neutral={neutral}
             bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
+            total={this.countTotalFeedback}
+            positivePercentage={this.countPositiveFeedbackPercentage}
           />
         </Section>
       </div>
