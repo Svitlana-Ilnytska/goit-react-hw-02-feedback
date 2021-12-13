@@ -19,8 +19,7 @@ export default class App extends Component {
   };
 
   countTotalFeedback = () => {
-    const totalSum = Object.keys(this.state)
-    .reduce((sum, key) => {
+    const totalSum = Object.keys(this.state).reduce((sum, key) => {
       return sum + this.state[key];
     }, 0);
     return totalSum;
@@ -33,10 +32,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { good } = this.state;
-    const { neutral } = this.state;
-    const { bad } = this.state;
-    // const { options } = this.state;
+    const { good, neutral, bad } = this.state;
 
     return (
       <div>
